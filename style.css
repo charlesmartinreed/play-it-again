@@ -1,0 +1,37 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: rgb(38, 38, 161);
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+}
+
+.piano-keyboard {
+  display: flex;
+}
+
+.piano-key {
+}
+
+.piano-key-white {
+  height: 300px;
+  width: 75px;
+  border: 1px solid rgb(32, 32, 32);
+  background-color: white;
+}
+
+.piano-key-black {
+  height: 200px;
+  width: 50px;
+  background-color: black;
+  margin-left: -25px;
+  margin-right: -25px;
+  z-index: 20;
+}
