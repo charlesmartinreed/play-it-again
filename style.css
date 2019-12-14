@@ -18,20 +18,20 @@ body {
 }
 
 .piano-key {
+  height: calc(var(--width) * 4);
+  width: var(--width);
 }
 
 .piano-key-white {
-  height: 300px;
-  width: 75px;
+  --width: 75px;
   border: 1px solid rgb(32, 32, 32);
   background-color: white;
 }
 
 .piano-key-black {
-  height: 200px;
-  width: 50px;
+  --width: 50px;
   background-color: black;
-  margin-left: -25px;
-  margin-right: -25px;
+  margin-left: calc(var(--width) / -2);
+  margin-right: calc(var(--width) / -2);
   z-index: 20;
 }
