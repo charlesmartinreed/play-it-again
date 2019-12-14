@@ -29,6 +29,9 @@ function playNoteAudio(key) {
 
 // PRESS TO PLAY
 document.addEventListener("keydown", e => {
+  // stop notes from triggering rapidly
+  if (e.repeat) return;
+
   const key = e.key;
 
   const whiteKeyIndex = WHITE_KEYS.indexOf(key);
