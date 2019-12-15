@@ -7,6 +7,12 @@ const BLACK_KEYS = ["s", "d", "g", "h", "j"];
 const whiteKeys = document.querySelectorAll(".piano-key-white");
 const blackKeys = document.querySelectorAll(".piano-key-black");
 
+const cpuNote = document.querySelector(".cpu-note-value");
+
+window.addEventListener("load", () => {
+  initgame();
+});
+
 // CLICK TO PLAY
 keys.forEach(key => {
   key.addEventListener("click", () => playNoteAudio(key));
@@ -40,3 +46,42 @@ document.addEventListener("keydown", e => {
   if (whiteKeyIndex > -1) playNoteAudio(whiteKeys[whiteKeyIndex]);
   if (blackKeyIndex > -1) playNoteAudio(blackKeys[blackKeyIndex]);
 });
+
+// CPU
+
+const initgame = () => {
+  setInterval(() => cpuPickRandomNote(), 2000);
+};
+
+const getRandomKeyColor = () => {
+  return Math.round(Math.random());
+};
+
+const cpuPickRandomNote = () => {
+  let cpuKeyColor = getRandomKeyColor();
+  let cpuNoteIndex;
+  let cpuNoteValue;
+
+  if (cpuKeyColor === 0) {
+    cpuNoteIndex = Math.floor(Math.random() * blackKeys.length);
+    cpuNoteValue = blackKeys[cpuNoteIndex].dataset.note;
+    console.log(cpuNoteIndex);
+
+    keyAudio.forEach(keyNote => {
+      if (keyNote.id === cpuNoteValue) {
+        keyNote.play();
+      }
+    });
+  } else if (cpuKeyColor === 1) {
+    cpuNoteIndex = Math.floor(Math.random() * whiteKeys.length);
+    cpuNoteValue = whiteKeys[cpuNoteIndex].dataset.note;
+    console.log(cpuNoteIndex);
+
+    keyAudio.forEach(keyNote => {
+      if (keyNote.id === cpuNoteValue) {
+        keyNote.play();
+      }
+    });
+  }
+  cpuNote.textContent = cpuNoteValue;
+};
