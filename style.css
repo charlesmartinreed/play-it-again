@@ -21,6 +21,17 @@ body {
   font-weight: 800;
 }
 
+.player-score {
+  position: absolute;
+  top: 2%;
+  right: 7.5%;
+  font-size: 1.5rem;
+  color: rgb(170, 66, 66);
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
 .piano-keyboard {
   display: flex;
 }

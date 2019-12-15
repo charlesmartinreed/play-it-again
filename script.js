@@ -9,6 +9,11 @@ const blackKeys = document.querySelectorAll(".piano-key-black");
 
 const cpuNote = document.querySelector(".cpu-note-value");
 let currentCPUNote;
+let playerAccuracyEl = document.querySelector(".player-score");
+
+let cpuNoteCount = 0;
+let playerNoteCount = 0;
+let playerAccuracyText;
 
 window.addEventListener("load", () => {
   initgame();
@@ -33,6 +38,7 @@ function playNoteAudio(key) {
   if (note === currentCPUNote) {
     //   add 'success' class
     key.classList.add("correct");
+    playerNoteCount++;
   } else {
     //   add 'incorrect' class to key
     key.classList.add("incorrect");
@@ -93,7 +99,17 @@ const cpuPickRandomNote = () => {
       }
     });
   }
+
+  cpuNoteCount++;
+
+  //   update the UI
   cpuNote.textContent = cpuNoteValue;
   currentCPUNote = cpuNoteValue;
-  console.log(currentCPUNote);
+
+  playerAccuracyText = `${playerNoteCount} out of ${cpuNoteCount} = ${(
+    (playerNoteCount / cpuNoteCount) *
+    100
+  ).toFixed(0)} %`;
+
+  playerAccuracyEl.textContent = playerAccuracyText;
 };
