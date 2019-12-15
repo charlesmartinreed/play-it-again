@@ -51,3 +51,11 @@ body {
 .piano-key-black.active {
   background-color: rgb(51, 51, 51);
 }
+
+.piano-key.correct {
+  background-color: rgb(10, 172, 64);
+}
+
+.piano-key.incorrect {
+  background-color: rgb(179, 24, 24);
+}

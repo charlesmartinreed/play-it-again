@@ -8,6 +8,7 @@ const whiteKeys = document.querySelectorAll(".piano-key-white");
 const blackKeys = document.querySelectorAll(".piano-key-black");
 
 const cpuNote = document.querySelector(".cpu-note-value");
+let currentCPUNote;
 
 window.addEventListener("load", () => {
   initgame();
@@ -28,8 +29,19 @@ function playNoteAudio(key) {
   noteAudio.currentTime = 0;
   noteAudio.play();
 
+  //   check to see if matches the note for this round
+  if (note === currentCPUNote) {
+    //   add 'success' class
+    key.classList.add("correct");
+  } else {
+    //   add 'incorrect' class to key
+    key.classList.add("incorrect");
+  }
+
   noteAudio.addEventListener("ended", () => {
     key.classList.remove("active");
+    key.classList.remove("correct");
+    key.classList.remove("incorrect");
   });
 }
 
@@ -50,7 +62,7 @@ document.addEventListener("keydown", e => {
 // CPU
 
 const initgame = () => {
-  setInterval(() => cpuPickRandomNote(), 2000);
+  setInterval(() => cpuPickRandomNote(), 3000);
 };
 
 const getRandomKeyColor = () => {
@@ -65,7 +77,6 @@ const cpuPickRandomNote = () => {
   if (cpuKeyColor === 0) {
     cpuNoteIndex = Math.floor(Math.random() * blackKeys.length);
     cpuNoteValue = blackKeys[cpuNoteIndex].dataset.note;
-    console.log(cpuNoteIndex);
 
     keyAudio.forEach(keyNote => {
       if (keyNote.id === cpuNoteValue) {
@@ -75,7 +86,6 @@ const cpuPickRandomNote = () => {
   } else if (cpuKeyColor === 1) {
     cpuNoteIndex = Math.floor(Math.random() * whiteKeys.length);
     cpuNoteValue = whiteKeys[cpuNoteIndex].dataset.note;
-    console.log(cpuNoteIndex);
 
     keyAudio.forEach(keyNote => {
       if (keyNote.id === cpuNoteValue) {
@@ -84,4 +94,6 @@ const cpuPickRandomNote = () => {
     });
   }
   cpuNote.textContent = cpuNoteValue;
+  currentCPUNote = cpuNoteValue;
+  console.log(currentCPUNote);
 };
