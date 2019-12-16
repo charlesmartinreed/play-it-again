@@ -16,20 +16,33 @@ body {
 }
 
 .cpu-note-value {
-  font-size: 4rem;
-  color: rgb(214, 175, 117);
+  font-size: 6rem;
+  color: rgb(160, 120, 60);
+  text-shadow: 0px 0px 1rem rgba(0, 0, 0, 0.3);
   font-weight: 800;
+  position: relative;
+}
+
+.cpu-note-value::after {
+  position: absolute;
+  content: "";
+  background-color: rgb(160, 120, 60);
+  bottom: -20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120%;
+  height: 10px;
 }
 
 .player-score {
   position: absolute;
   top: 2%;
   right: 7.5%;
-  font-size: 1.5rem;
-  color: rgb(170, 66, 66);
-  font-weight: 500;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+  font-size: 2.3rem;
+  color: rgb(14, 165, 59);
+  font-weight: 600;
+  letter-spacing: -0.06em;
+  /* text-transform: uppercase; */
 }
 
 .piano-keyboard {

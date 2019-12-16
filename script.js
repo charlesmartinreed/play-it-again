@@ -106,10 +106,9 @@ const cpuPickRandomNote = () => {
   cpuNote.textContent = cpuNoteValue;
   currentCPUNote = cpuNoteValue;
 
-  playerAccuracyText = `${playerNoteCount} out of ${cpuNoteCount} = ${(
-    (playerNoteCount / cpuNoteCount) *
-    100
-  ).toFixed(0)} %`;
+  playerAccuracyText = `${((playerNoteCount / cpuNoteCount) * 100).toFixed(
+    0
+  )} %`;
 
   playerAccuracyEl.textContent = playerAccuracyText;
 };
