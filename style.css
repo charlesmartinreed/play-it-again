@@ -52,6 +52,11 @@ body {
 .piano-key {
   height: calc(var(--width) * 4);
   width: var(--width);
+  transform-origin: top;
+}
+
+.piano-key.pressed {
+  transform: rotateX(10deg);
 }
 
 .piano-key-white {

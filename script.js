@@ -29,6 +29,7 @@ function playNoteAudio(key) {
   let noteAudio = document.getElementById(note);
 
   key.classList.add("active");
+  key.classList.add("pressed");
 
   //   this restarts the file at the beginning each time the function is triggered, allowing the user to rapidly fire the same note.
   noteAudio.currentTime = 0;
@@ -39,7 +40,9 @@ function playNoteAudio(key) {
     //   add 'success' class
     key.classList.add("correct");
     playerNoteCount++;
-  } else {
+  }
+
+  if (note !== currentCPUNote) {
     //   add 'incorrect' class to key
     key.classList.add("incorrect");
   }
@@ -48,6 +51,7 @@ function playNoteAudio(key) {
     key.classList.remove("active");
     key.classList.remove("correct");
     key.classList.remove("incorrect");
+    key.classList.remove("pressed");
   });
 }
 
